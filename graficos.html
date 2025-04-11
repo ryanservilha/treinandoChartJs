@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinando Chart JS</title>
+</head>
+
+<body>
+    <div class="grafico">
+        <h2>Variação do Clima no Período da Tarde:</h2>
+        <div class="graficoDeLinhas">
+            <canvas id="graficoLinha"></canvas>
+        </div>
+    </div>
+    <div class="grafico">
+        <h2>Variação Média do Clima no Primeiro Semestre de 2024:</h2>
+        <div class="graficoDeBarras">
+            <canvas id="graficoBarra"></canvas>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const graficoLinha = document.getElementById('graficoLinha');
+
+    new Chart(graficoLinha, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [{
+                label: 'Temperatura',
+                data: [30, 29, 28, 25, 22, 23],
+                borderWidth: 3,
+                borderColor: 'orange',
+                backgroundColor: 'orange'
+            },
+            {
+                label: 'Umidade',
+                data: [80, 82, 80, 85, 80, 83],
+                borderWidth: 3,
+                borderColor: 'blue',
+                backgroundColor: 'blue'
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const graficoBarra = document.getElementById('graficoBarra');
+
+    new Chart(graficoBarra, {
+        type: 'bar',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Temperatura Média',
+                data: [22, 24, 27, 23, 20, 18],
+                borderWidth: 3,
+                borderColor: 'orange',
+                backgroundColor: 'orange'
+            },
+            {
+                label: 'Umidade Média',
+                data: [90, 89, 93, 87, 88, 82],
+                borderWidth: 3,
+                borderColor: 'blue',
+                backgroundColor: 'blue'
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+<style>
+    body {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .grafico {
+        display: flex;
+        flex-direction: column;
+        margin-top: 7%;
+    }
+
+    .grafico h2 {
+        text-align: center;
+    }
+
+    .graficoDeLinhas {
+        width: 700px;
+    }
+
+    .graficoDeBarras {
+        width: 700px;
+    }
+</style>
